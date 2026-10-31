@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f4f3">
+  <meta name="description" content="A bright, focused study task workbench.">
+  <title>Tabula Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="app-frame">
+    <header class="masthead">
+      <a class="brand" href="#" aria-label="Tabula Study home"><span class="brand-icon" aria-hidden="true">T</span><span>TABULA<span class="brand-study"> / STUDY</span></span></a>
+      <div class="today-mark"><span class="today-dot"></span><span id="today-label">YOUR DAILY BOARD</span></div>
+      <span class="local-label">LOCAL ONLY</span>
+    </header>
+
+    <section class="workbench" aria-label="Study planner">
+      <aside class="compose-panel" aria-label="Add a study task">
+        <div class="compose-topline"><span>START HERE</span><span class="compose-number">01</span></div>
+        <p class="compose-copy">Get the next thing out of your head and into your plan.</p>
+        <form class="task-form" id="task-form" novalidate>
+          <label class="input-label" for="task-title">TASK NAME</label>
+          <input id="task-title" name="title" type="text" maxlength="120" placeholder="Read lecture notes" autocomplete="off" required>
+          <label class="input-label course-label" for="task-course">COURSE <span>OPTIONAL</span></label>
+          <input id="task-course" name="course" type="text" maxlength="60" placeholder="e.g. History 204" autocomplete="off">
+          <p class="form-error" id="form-error" role="alert" hidden>A task name is required.</p>
+          <button type="submit" class="add-button"><span>Add task</span><span class="add-arrow" aria-hidden="true">↗</span></button>
+        </form>
+        <div class="compose-bottom"><span>SMALL STEPS COUNT</span><span class="spark" aria-hidden="true">✳</span></div>
+      </aside>
+
+      <section class="board-panel" aria-labelledby="board-title">
+        <div class="board-heading">
+          <div>
+            <p class="board-kicker">YOUR WORKSPACE <span>/</span> TODAY</p>
+            <h2 id="board-title">Study board</h2>
+          </div>
+          <div class="progress-count" aria-live="polite"><strong id="remaining-count">0</strong><span>OPEN</span></div>
+        </div>
+
+        <div class="board-toolbar">
+          <div class="filter-group" role="group" aria-label="Filter tasks">
+            <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">Everything <span id="all-count">0</span></button>
+            <button type="button" class="filter-button" data-filter="active" aria-pressed="false">Open</button>
+            <button type="button" class="filter-button" data-filter="completed" aria-pressed="false">Done</button>
+          </div>
+          <button type="button" class="clear-button" id="clear-completed" hidden>Clear done</button>
+        </div>
+
+        <div class="column-labels" aria-hidden="true"><span>MARK</span><span>ASSIGNMENT</span><span>EDIT</span></div>
+        <ul class="task-list" id="task-list" aria-label="Study tasks"></ul>
+        <div class="empty-state" id="empty-state">
+          <div class="empty-cross" aria-hidden="true">+</div>
+          <h3 id="empty-title">The board is open.</h3>
+          <p id="empty-copy">Your tasks will show up here.</p>
+        </div>
+        <footer class="board-footer"><span><span class="footer-dot"></span> SYNC: THIS DEVICE</span><span id="task-total">0 TASKS</span></footer>
+      </section>
+    </section>
+
+    <footer class="page-footer"><span>TABULA STUDY</span><span>PLAN A LITTLE. DO A LITTLE.</span></footer>
+  </main>
+</body>
+</html>
